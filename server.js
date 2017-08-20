@@ -4,12 +4,12 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var content=
+var articleOnet=
 {
     title:'article one |parth khunteta',
     heading:'article one',
     date:'19 august 2017',
-    content:
+    content:`
     <p>
                 this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article 
             </p>
@@ -18,10 +18,40 @@ var content=
             </p>
             <p>
                 this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article this is the content for  my first article 
-            </p>'
+            </p>
+    `
             
 
 };
+var htmlTemplate=`
+<html>
+    <head>
+        <title>
+            Article one | Parth khunteta
+        </title>
+        <meta name ="viewport" content="width=device_width, initial-scale=1" />
+        <link href="/ui/style.css" rel="stylesheet" />
+           </head>
+    
+    <body>
+        <div class="container">
+        <div>
+            <a href="/"> home </a>
+        </div>
+        <hr/>
+        <h3>
+            article one 
+        </h3>
+        <div>
+            19 august 2017
+        </div>
+        <div>
+           
+        </div>
+        </div>
+    </body>
+    </html>
+`;
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
