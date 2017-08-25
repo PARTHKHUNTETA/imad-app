@@ -2,7 +2,16 @@ console.log('Loaded!');
 var element=document.getElementById('main-text');
 element.innerHTML="new value";
 var img=document.getElementById('madi');
-img.onclick = function() 
+var marginLeft=0;
+function moveRight()
 {
-  img.style.marginLeft='100px'; 
+    marginLeft=marginleft+10;
+    img.style.marginLeft +'px';
+}
+img.onclick = function()
+
+{
+  var interval=setInterval(moveRight,100);
+  
+  
 };
