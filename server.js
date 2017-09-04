@@ -112,7 +112,7 @@ app.get('/', function (req, res) {
  app.get('/test-db', function(req,res){
      
     Pool.query('SELECT * FROM test',function(err,result){
-       if(err){
+        if(err){
            
            res.ststus(500).send(err.toString());
        } 
@@ -147,10 +147,31 @@ app.get('/submit-name',function(req,res)
    res.send(JSON.stringify(names));
 });
 
-app.get('/:articleName', function (req, res)
+app.get('/articles/:articleName', function (req, res)
 {
-    var articleName=req.params.articleName;
-  res.send(createTemplate(articles[articleName]));  
+
+    Pool.query("SELECT * FROM article WHERE title =" + req.params.articleName, function(err,result){
+    
+    if(err){
+           
+           res.ststus(500).send(err.toString());
+       } 
+       else{
+           if(result.rows.length===0){
+           res.status(404).send('article not found');
+           }
+          else
+          {
+           var articleDATA=result.rows[0];
+           res.send(createTemplate(articleData));
+           
+              
+          }
+           
+       }
+
+    });
+  res.send(createTemplate(articleData));  
 });
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
