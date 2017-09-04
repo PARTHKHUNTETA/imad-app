@@ -110,7 +110,7 @@ app.get('/', function (req, res) {
  app.get('/test-db',function(req,res)
  {
      
-    Pool.query('select * FROM test',function(err,result)
+    Pool.query('SELECT * FROM test',function(err,result)
     {
        if(err){
            
