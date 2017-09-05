@@ -137,11 +137,12 @@ app.get('/', function (req, res) {
     pool.query('INSERT INTO "user" (username,password) VALUES($1, $2)', [username,dbString] ,function(err,result){
          if(err){
            
-           res.ststus(500).send(err.toString());
-       } 
-       else{
-           res.send('User successfully created :'+ username);
-       }
+                     res.ststus(500).send(err.toString());
+                } 
+       else
+                {
+                         res.send('User successfully created :'+ username);
+                 }
        
         
         
