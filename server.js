@@ -12,16 +12,9 @@ var config = {
     port:'5432',
     password: process.env.DB_PASSWORD
 };
-
-
-
-
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-
-
-
 var articles={
 'article-one':{
 
@@ -67,9 +60,6 @@ var articles={
             `
 }
 };
-
-
-
 function createTemplate(data){
     var title=data.title;
     var heading=data.heading;
@@ -106,8 +96,6 @@ var htmlTemplate=`
 `; 
     return htmlTemplate;
 }
-
-
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -122,11 +110,8 @@ app.get('/', function (req, res) {
  {
     var hashedString = hash(req.params.input,'this-is-some-random-string');
     res.send(hashedString);
-    
-     
  });
- 
- app.post('/create-user',function(req,res){
+  app.post('/create-user',function(req,res){
      
      var username =req.body.username;
      var password=req.body.password;
@@ -175,12 +160,9 @@ app.get('/', function (req, res) {
                 }
        });  
      
-     
- });
+});
  
- 
-
- var Pool = new Pool(config);
+  var Pool = new Pool(config);
  app.get('/test-db', function(req,res){
      
     Pool.query('SELECT * FROM test',function(err,result){
@@ -188,17 +170,14 @@ app.get('/', function (req, res) {
            
            res.ststus(500).send(err.toString());
        } 
-       else{
+       else
+       {
            res.send(JSON.stringify(result));
        }
        
-       
-    }); 
+      }); 
  });
- 
- 
- 
- var counter=0;
+var counter=0;
 app.get('/counter',function(req,res)
 
 { counter=counter+1;
@@ -254,13 +233,6 @@ app.get('/ui/main.js', function (req, res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
-
-
-
-
-
-// Do not change port, otherwise your app won't run on IMAD servers
-// Use 8080 only for local development if you already have apache running on 80
 
 var port = 80;
 app.listen(port, function () {
