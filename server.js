@@ -132,10 +132,10 @@ app.get('/', function (req, res) {
  app.post('/login',function(req,res){
       var username =req.body.username;
      var password=req.body.password;
-    Pool.query('SELECT * FROM "user"  WHERE username = $1', [username] ,function(err,result){
+    Pool.query('SELECT * FROM "user" WHERE username = $1', [username] ,function(err,result){
          if(err){
            
-                     res.ststus(500).send(err.toString());
+                     res.status(500).send(err.toString());
                 } 
        else
                 {
@@ -209,7 +209,7 @@ app.get('/articles/:articleName', function (req, res)
        } 
        else{
            if(result.rows.length === 0){
-           res.status(403).send('article not found');
+           res.status(404).send('article not found');
            }
           else
           {
