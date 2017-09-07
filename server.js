@@ -157,7 +157,7 @@ app.get('/', function (req, res) {
                         var salt = dbString.split('$')[2];
                         var hashedPassword = hash(password, salt);
                         
-                        if(hashedPassword ===dbString){
+                        if(hashedPassword === dbString){
                             
                         req.session.auth={userId:result.rows[0].id};   
                             
@@ -178,6 +178,11 @@ app.get('/', function (req, res) {
  if(req.session && req.session.auth && req.session.auth.userId)
  {
      res.send('youare logged in: ' + req.session.auth.userId.toString());
+ }
+ 
+ else
+ {
+    res.send('you are not logged in'); 
  }
      
  });
