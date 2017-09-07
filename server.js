@@ -184,6 +184,12 @@ app.get('/', function (req, res) {
      
  });
  
+ 
+ app.get('/logout', function(req,res){
+    delete req.session.auth;
+    res.send('logged out');
+ });
+ 
   var Pool = new Pool(config);
  app.get('/test-db', function(req,res){
      
