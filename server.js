@@ -128,7 +128,7 @@ app.get('/', function (req, res) {
     Pool.query('INSERT INTO "user" (username,password) VALUES($1, $2)', [username,dbString] ,function(err,result){
          if(err){
            
-                     res.ststus(500).send(err.toString());
+                     res.status(500).send(err.toString());
                 } 
        else
                 {
