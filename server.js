@@ -190,6 +190,7 @@ app.get('/', function (req, res) {
     res.send('logged out');
  });
  
+ 
   var Pool = new Pool(config);
  app.get('/test-db', function(req,res){
      
@@ -205,6 +206,7 @@ app.get('/', function (req, res) {
        
       }); 
  });
+ 
 var counter=0;
 app.get('/counter',function(req,res)
 
@@ -233,7 +235,7 @@ app.get('/articles/:articleName', function (req, res)
     
     if(err){
            
-           res.ststus(500).send(err.toString());
+           res.status(500).send(err.toString());
        } 
        else{
            if(result.rows.length === 0){
