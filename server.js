@@ -4,7 +4,7 @@ var path = require('path');
 var Pool=require('pg').Pool;
 var crypto = require('crypto');
 var bodyParser = require('body-parser');
-var session=require('express-session');
+var session = require('express-session');
 var config = {
     user:'parthkhunteta96',
     database:'parthkhunteta96',
@@ -156,7 +156,7 @@ app.get('/', function (req, res) {
                         
                         if(hashedPassword === dbString){
                             
-                        req.session.auth={userId:result.rows[0].id};   
+                        req.session.auth = {userId: result.rows[0].id};   
                             
                         res.send('credentials are correct!');
                         }
